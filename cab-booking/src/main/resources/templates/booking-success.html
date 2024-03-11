@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Successful</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Booking Successful</h1>
+    <p>Your cab booking has been successfully created.</p>
+    <p>Booking Details:</p>
+    <ul>
+        <li>Pick-up Date and Time: <span th:text="${booking.pickUpDateTime}"></span></li>
+        <li>Pick-up Location: <span th:text="${booking.pickupLocation}"></span></li>
+        <li>Destination: <span th:text="${booking.destination}"></span></li>
+        <li>Minimum Seats: <span th:text="${booking.minSeats}"></span></li>
+        <li>Price: <span th:text="${booking.price}"></span></li>
+    </ul>
+    <a href="/api/bookings/new" class="btn btn-primary">Book another cab</a> <br>
+    <a href="/api/bookings" class="btn btn-primary">See all bookings</a>
+</div>
+</body>
+</html>

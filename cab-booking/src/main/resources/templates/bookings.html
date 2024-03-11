@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All bookings</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>All bookings</h1>
+    <div th:if="${not #lists.isEmpty(bookings)}">
+        <table>
+            <tr>
+                <th>Pick-up Date and Time</th>
+                <th>Pick-up Location</th>
+                <th>Destination</th>
+                <th>Minimum Seats</th>
+            </tr>
+            <tr th:each="booking : ${bookings}">
+                <td th:text="${booking.pickUpDateTime}"></td>
+                <td th:text="${booking.pickupLocation}"></td>
+                <td th:text="${booking.destination}"></td>
+                <td th:text="${booking.minSeats}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${#lists.isEmpty(bookings)}">
+        <p>No bookings found.</p>
+    </div>
+    <a href="/api/bookings/new" class="btn btn-primary">Book a cab</a>
+</div>
+</body>
+</html>
