@@ -1,0 +1,10 @@
+{
+  "/api/messages/public": "/api-messages-public",
+  "/api/messages/protected": "/api-messages-protected",
+  "/api/messages/admin": "/api-messages-admin",
+  "/api-geo-address-current-location": "/api-geo-address-current-location",
+  "/api/public/enquire": "/api-public-enquire",
+  "/api/public/home": "/api-public-home",
+  "/api/protected/confirm": "/api-protected-confirm",
+  "/api/protected/bookings": "api-protected-bookings"
+}

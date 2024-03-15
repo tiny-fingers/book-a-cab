@@ -1,0 +1,40 @@
+{
+  "api-geo-address-current-location": {
+    "data": "2 Rua Cafelândia, Carapicuíba, Brasil"
+  },
+  "api-protected-confirm": {
+    "text": "Booking accepted"
+  },
+  "api-protected-bookings": [
+    {
+      "destination": "Destination",
+      "pickupLocation": "From here",
+      "vehicleType": "4 seat",
+      "distance": "26.3",
+      "price": "25.76"
+    },
+    {
+      "destination": "Destination",
+      "pickupLocation": "From here",
+      "vehicleType": "7 seat",
+      "distance": "5",
+      "price": "12.03"
+    }
+  ],
+  "api-public-enquire": [
+    {
+      "destination": "Destination",
+      "pickupLocation": "From here",
+      "vehicleType": "4 seat",
+      "distance": "26.3",
+      "price": "25.76"
+    },
+    {
+      "destination": "Destination",
+      "pickupLocation": "From here",
+      "vehicleType": "7 seat",
+      "distance": "5",
+      "price": "12.03"
+    }
+  ]
+}
