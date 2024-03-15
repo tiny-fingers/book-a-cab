@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tinyfingers.simplilearn.cabpricecalculator.model.Pricing;
 
+import java.text.DecimalFormat;
+
 @RestController
 @Slf4j
 @RequestMapping("/api")
@@ -16,9 +18,9 @@ public class CalculateController {
   @GetMapping("/calculate")
   public Pricing getPrice(@RequestParam("distance") double distance, @RequestParam("vehicleType") String vehicleType) {
     return switch (vehicleType) {
-      case "4seat" -> new Pricing(distance, 1.5 * distance, vehicleType);
-      case "7seat" -> new Pricing(distance, 2.5 * distance, vehicleType);
-      default -> new Pricing(distance, 3 * distance, "other");
+      case "4seat" -> new Pricing(distance,  Math.floor(1.5 * distance * 100) / 100, vehicleType);
+      case "7seat" -> new Pricing(distance, Math.floor(2.5 * distance * 100 ) / 100, vehicleType);
+      default -> new Pricing(distance, Math.floor(3 * distance * 100 ) / 100, "other");
     };
   }
 }
