@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  server:
+    image: cab-booking-server:latest
+    container_name: server
+    environment:
+      - OAUTH_ISSUER=
+      - OAUTH_CLIENT_ID=
+      - OAUTH_CLIENT_SECRET=
+      - OAUTH_AUDIENCE=
+      - SERVER_PORT=80
+      - REACT_APP_AUTH0_CALLBACK_URL=http://localhost:3000
+      - API_DISTANCE_HOST_URL=http://distance/api
+      - API_PRICE_CALCULATOR_HOST_URL=http://price-calculator/api
+      - API_DISTANCE_HOST_URL:http://ui:4040
+    ports:
+      - "3000:80"
+    networks:
+      - bookacab
+  distance:
+    image: distance:latest
+    container_name: distance
+    environment:
+      - SERVER_PORT=80
+    ports:
+      - "9999:80"
+    networks:
+      - bookacab
+  price-calculator:
+    image: cab-price-calculator:latest
+    container_name: price-calculator
+    environment:
+      - SERVER_PORT=80
+    ports:
+      - "8888:80"
+    networks:
+      - bookacab
+  ui:
+    image: book-a-cab-ui:latest
+    container_name: book-a-cab-ui
+    environment:
+      - REACT_APP_API_SERVER_URL=
+      - REACT_APP_AUTH0_DOMAIN=
+      - REACT_APP_AUTH0_CLIENT_ID=
+      - REACT_APP_AUTH0_CALLBACK_URL=http://localhost:4040
+      - REACT_APP_AUTH0_AUDIENCE=http://localhost:3000/api
+      - SERVER_PORT=4040
+    ports:
+      - "4040:4040"
+    networks:
+      - bookacab
+
+networks:
+  bookacab:
+    driver: bridge
