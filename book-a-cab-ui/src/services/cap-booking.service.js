@@ -6,6 +6,7 @@ const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
 export const getPublicResource = async () => {
   const config = {
     url: `${apiServerUrl}/api/messages/public`,
+    // url: `/api/messages/public`,
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -22,6 +23,7 @@ export const getPublicResource = async () => {
 
 export const getProtectedResource = async (accessToken) => {
   const config = {
+    // url: `/api/messages/protected`,
     url: `${apiServerUrl}/api/messages/protected`,
     method: "GET",
     headers: {
@@ -40,6 +42,7 @@ export const getProtectedResource = async (accessToken) => {
 
 export const getAdminResource = async (accessToken) => {
   const config = {
+    // url: `/api/messages/admin`,
     url: `${apiServerUrl}/api/messages/admin`,
     method: "GET",
     headers: {
@@ -58,7 +61,8 @@ export const getAdminResource = async (accessToken) => {
 
 export const getBookACabProtected = async (accessToken) => {
   const config = {
-    url: `http://localhost:3000/api/protected`,
+    // url: `/api/protected`,
+    url: `${apiServerUrl}/api/protected`,
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -76,7 +80,8 @@ export const getBookACabProtected = async (accessToken) => {
 
 export const confirmBooking = async (accessToken, requestBody) => {
   const config = {
-    url: `http://localhost:3000/api/protected/confirm`,
+    // url: `/api/protected/confirm`,
+    url: `${apiServerUrl}/api/protected/confirm`,
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -98,10 +103,33 @@ export const confirmBooking = async (accessToken, requestBody) => {
 export const sendEnquiry = async (requestBody) => {
     console.log(`Sending ${JSON.stringify(requestBody)}`);
     const config = {
-        url: `http://localhost:3000/api/public/enquire`,
+        // url: `/api/public/enquire`,
+        url: `${apiServerUrl}/api/public/enquire`,
         method: "GET",
         headers: {
             "content-type": "application/json",
+        },
+        params: {...requestBody},
+    };
+
+    const {data, error} = await callExternalApi({config});
+
+    console.log(`Received ${JSON.stringify(data)}`);
+
+    return {
+        data: data || null,
+        error,
+    };
+}
+
+export const cancelBooking = async (accessToken, requestBody) => {
+    console.log(`Sending ${JSON.stringify(requestBody)}`);
+    const config = {
+        // url: `/api/public/enquire`,
+        url: `${apiServerUrl}/api/protected/cancelBooking`,
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
         },
         params: {...requestBody},
     };
@@ -120,7 +148,8 @@ export const getAllBookings = async (accessToken) => {
     console.log(`Sending ${accessToken}`);
 
     const config = {
-    url: `http://localhost:3000/api/protected/bookings`,
+    // url: `/api/protected/bookings`,
+    url: `${apiServerUrl}/api/protected/bookings`,
     method: "GET",
     headers: {
       "content-type": "application/json",

@@ -1,17 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { AdminPage } from "./pages/archive/admin-page";
 import { HomePage } from "./pages/home-page";
 import { NotFoundPage } from "./pages/not-found-page";
-import { ProfilePage } from "./pages/profile-page";
-import { ProtectedPage } from "./pages/protected-page";
-import { PublicPage } from "./pages/public-page";
 import { CallbackPage } from "./pages/callback-page";
 import { PageLoader } from "./components/page-loader";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthenticationGuard } from "./components/authentication-guard";
 import BookingConfirmationPage from "./pages/booking-confirmation-page";
-import BookingsPage from "./pages/archive/bookings-page";
+import BookingsPage from "./pages/bookings-page";
 
 export const App = () => {
   const { isLoading } = useAuth0();
@@ -35,9 +31,6 @@ export const App = () => {
         path="/bookings"
         element={<AuthenticationGuard component={BookingsPage} />}
       />
-      <Route path="/public" element={<PublicPage />} />
-      <Route path="/protected" element={<ProtectedPage />} />
-      <Route path="/admin" element={<AdminPage />} />
       <Route path="/callback" element={<CallbackPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

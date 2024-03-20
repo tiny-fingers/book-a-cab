@@ -8,6 +8,19 @@
     font-size: 1.2rem;
 }
 
+.booking {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    height: fit-content;
+    width: 100%;
+    background-color: var(--amber);
+    border: #2a2e35;
+    border-radius: 1rem;
+    margin: 3rem 2rem;
+    padding: 2rem 5rem;
+}
 .container--columns {
     align-items: center;
     display: grid;
@@ -86,5 +99,15 @@ input {
     padding-left: 4rem; /* Adjust the padding to make room for the icon */
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+#cancel-booking {
+    float: right;
+    position: relative;
+    color: red;
+    width: 20%;
+}
+.cancel-button {
+    justify-items: right;
 }
 

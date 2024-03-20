@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BookACapApplicationTests {
 
   @Test
-  void contextLoads() {
+  void contextLoads() throws InterruptedException {
   }
-
 }
